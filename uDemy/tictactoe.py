@@ -1,11 +1,12 @@
 import random
 
-# start_board = ['#', '-', '-', '-', '-', '-', '-', '-', '-', '-']
+start_board = ['#', '-', '-', '-', '-', '-', '-', '-', '-', '-']
 
 def clear_output():
   print('\n'*10)
 
 def display_board(board):
+  clear_output()
   print('-'*9)
   print(board[7]+' | '+board[8]+' | '+board[9]+'\n'+'-'*9)
   print(board[4]+' | '+board[5]+' | '+board[6]+'\n'+'-'*9)
@@ -42,7 +43,7 @@ def place_marker(board, marker, position):
   board[position] = marker
 
 def choose_first():
-  flip = random.randint(0,1)
+  flip = random.randint(0, 1)
   if flip == 0:
     return 'Player 1'
   else:
@@ -51,13 +52,18 @@ def choose_first():
 def space_check(board, position):
   return board[position] == ' '
 
+# def full_board_check(board):
+#   for i in range(1, 10):
+#     if space_check(board, i):
+#       return False
+#     # Board is full when retrun True
+#     return True
+
 def full_board_check(board):
-  for i in range(1,10):
-    if space_check(board, i):
-      return False
-    # Board is full when retrun True
-    else:
-      return True
+  if ' ' in board[1:]:
+    return False
+  else:
+    return True
 
 def player_choice(player, board):
   position = 0
@@ -67,7 +73,7 @@ def player_choice(player, board):
 
 def replay():
   choice = input('Play again? Enter Yes or No: ').lower()
-  print('choice =',choice)
+  print('choice =', choice)
   return choice == 'yes'
 
 # While loop to keep running the game
