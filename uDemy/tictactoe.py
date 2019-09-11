@@ -59,10 +59,10 @@ def full_board_check(board):
     else:
       return True
 
-def player_choice(board):
+def player_choice(player, board):
   position = 0
   while position not in [1,2,3,4,5,6,7,8,9] or not space_check(board,position):
-    position = int(input('Choose a position: (1-9): '))
+    position = int(input(player+', choose a position: (1-9): '))
   return position
 
 def replay():
@@ -83,19 +83,20 @@ while True:
   turn = choose_first()
   print(turn,'will go first.')
 
-  play_game = input('Ready to play? y or n? ').lower()
+  # play_game = input('Ready to play? y or n? ').lower()
+  #
+  # if play_game == 'y':
+  #   game_on = True
+  # else:
+  #   game_on = False
+  game_on = True
 
-  if play_game == 'y':
-    game_on = True
-  else:
-    game_on = False
-  
   while game_on:
     if turn == 'Player 1':
       # Show the board
       display_board(the_board)
       # Choose a position
-      position = player_choice(the_board)
+      position = player_choice(turn, the_board)
       # Place the marke on the position
       place_marker(the_board,player1_marker,position)
       # Or check if won
@@ -113,7 +114,7 @@ while True:
     else:
       display_board(the_board)
       # Choose a position
-      position = player_choice(the_board)
+      position = player_choice(turn, the_board)
       # Place the marke on the position
       place_marker(the_board,player2_marker,position)
       # Or check if won
@@ -131,6 +132,3 @@ while True:
 
   if not replay():
     break
-
-
-
