@@ -1,12 +1,28 @@
-def isPalindrome(x):
-    a = str(x)[::-1]
-    if str(x) == a:
-        return True
+def count_primes(num):
+  prime=[2]
+  x = 3
+  while x<=num:
+    for i in range(3,x,2):
+      k = i
+      if x%i==0:
+        x += 2
+        break
     else:
-        return False
-print(isPalindrome(121))
-print(isPalindrome(-121))
-print(isPalindrome(10))
+      prime.append(x)
+      x += 2
+  return prime,len(prime)
+a, b = count_primes(100)
+print(a, b)
+
+# def isPalindrome(x):
+#     a = str(x)[::-1]
+#     if str(x) == a:
+#         return True
+#     else:
+#         return False
+# print(isPalindrome(121))
+# print(isPalindrome(-121))
+# print(isPalindrome(10))
 
 # def twoSum(nums, target):
 #     dict={}
@@ -42,7 +58,3 @@ print(isPalindrome(10))
 likes = "Sammy likes to swim in the ocean, likes to spin up servers, and likes to smile."
 # print(likes.count("likes"))
 
-# def front_times(str):
-#     re = str[]
-#     print(re)
-# front_times('abcdefghijklmnopqrst')
